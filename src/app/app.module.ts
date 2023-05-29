@@ -14,6 +14,7 @@ import { VehiclesComponent } from './vehicles/vehicles.component';
 import { DocumentsComponent } from './documents/documents.component';
 import { ExpensesComponent } from './expenses/expenses.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     ExpensesComponent,
     NavbarComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
+  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, CommonModule],
   providers: [],
   bootstrap: [AppComponent],
 })
