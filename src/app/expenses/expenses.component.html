@@ -1,0 +1,84 @@
+<a routerLink="/expenses" routerLinkActive="active"></a>
+<div class="expenses">
+  <h3>Expenses List</h3>
+  <form
+    name="Vehicle Expenses"
+    id="vehicleExpenses"
+    *ngIf="requiredForm"
+    [formGroup]="requiredForm"
+    (ngSubmit)="onClickSubmit(requiredForm.value)"
+  >
+    <div>
+      <label for="rNumber"
+        >Registration Number :
+        <select
+          id="regNumber"
+          name="registration Number"
+          class="form-control form-select"
+          formControlName="registrationNumber"
+        >
+          <option *ngFor="let regNo of regNoArr">
+            {{ regNo }}
+          </option>
+        </select>
+      </label>
+    </div>
+
+    <div>
+      <label for="Date"
+        >Date :
+        <input
+          id="Date"
+          name="date"
+          class="form-control"
+          formControlName="date"
+          placeholder="DD-MM-YYYY"
+      /></label>
+    </div>
+    <div>
+      <label for="expenseName"
+        >Document Name :
+        <input
+          id="expenseName"
+          name="document name"
+          class="form-control"
+          formControlName="expenseName"
+          placeholder="Expense Name"
+      /></label>
+    </div>
+    <div>
+      <label for="expense"
+        >Date of Expiry :
+        <input
+          id="expense"
+          name="expenseName"
+          class="form-control"
+          formControlName="expense"
+          placeholder="00.00"
+      /></label>
+    </div>
+    <div>
+      <p>{{ warn }}</p>
+      <p>{{ success }}</p>
+    </div>
+    <div><button class="btn">Submit</button></div>
+  </form>
+
+  <div>
+    <h3>Document Details</h3>
+
+    <ul>
+      <li *ngFor="let vehicles of vehicleArr">
+        {{ vehicles.registrationNumber }}
+        <ul>
+          <li *ngFor="let expenses of vehicles.expenses">
+            <p>
+              {{ expenses.expenseName }}, {{ expenses.date }},
+              {{ expenses.expense }}
+            </p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>

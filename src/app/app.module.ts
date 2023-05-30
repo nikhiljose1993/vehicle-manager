@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { VehiclesComponent } from './vehicles/vehicles.component';
 import { DocumentsComponent } from './documents/documents.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ExpensesComponent } from './expenses/expenses.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     VehiclesComponent,
     DocumentsComponent,
     NavbarComponent,
+    ExpensesComponent,
   ],
   imports: [
     BrowserModule,
