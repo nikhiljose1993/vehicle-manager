@@ -44,7 +44,6 @@ export class VehiclesComponent implements OnInit {
       documents: [],
       expenses: [],
     };
-    console.log('vobj', vehicleObj);
 
     if (localStorage.getItem('data') === null) {
       localStorage.setItem('data', JSON.stringify([vehicleObj]));
