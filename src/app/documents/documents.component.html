@@ -1,71 +1,85 @@
 <a routerLink="documents" routerLinkActive="active"></a>
 <div class="documents">
-  <h3>Documents List</h3>
-  <form
-    name="Vehicle Documents"
-    id="vehicleDocuments"
-    [formGroup]="requiredForm"
-    (ngSubmit)="onClickSubmit(requiredForm.value)"
-  >
-    <div>
-      <label for="rNumber"
-        >Registration Number :
-        <select
+  <div class="document-form">
+    <h3>Documents List</h3>
+    <form
+      name="Vehicle Documents"
+      id="vehicleDocuments"
+      *ngIf="requiredForm"
+      [formGroup]="requiredForm"
+      (ngSubmit)="onClickSubmit(requiredForm.value)"
+    >
+      <div>
+        <label for="rNumber" class="form-label"
+          >Registration Number :
+          <ng-select
+            [items]="regNoArr"
+            bindLabel="Registration Number"
+            bindValue="id"
+            formControlName="registrationNumber"
+            [(ngModel)]="selectedVehicleId"
+            class="custom form-control"
+          >
+          </ng-select>
+          <!-- <select
           id="rNumber"
           name="registration Number"
-          class="form-control form-select"
+          class="form-select form-control"
           formControlName="registrationNumber"
         >
           <option *ngFor="let regNo of regNoArr">
             {{ regNo }}
           </option>
-        </select>
-      </label>
-    </div>
+        </select> -->
+        </label>
+      </div>
 
-    <div>
-      <label for="entryDate"
-        >Date :
-        <input
-          id="entryDate"
-          name="date"
-          class="form-control"
-          formControlName="date"
-          placeholder="DD-MM-YYYY"
-      /></label>
-    </div>
-    <div>
-      <label for="dName"
-        >Document Name :
-        <input
-          id="dName"
-          name="document name"
-          class="form-control"
-          formControlName="documentName"
-          placeholder="Document Name"
-      /></label>
-    </div>
-    <div>
-      <label for="eDate"
-        >Date of Expiry :
-        <input
-          id="eDate"
-          name="expiry date"
-          class="form-control"
-          formControlName="dateOfExpiry"
-          placeholder="DD-MM-YYYY"
-      /></label>
-    </div>
-    <div>
-      <p>{{ warn }}</p>
-      <p>{{ success }}</p>
-    </div>
-    <div><button class="btn">Submit</button></div>
-  </form>
+      <div>
+        <label for="entryDate" class="form-label"
+          >Date :
+          <input
+            id="entryDate"
+            name="date"
+            class="form-control"
+            formControlName="date"
+            placeholder="DD-MM-YYYY"
+        /></label>
+      </div>
+      <div>
+        <label for="dName" class="form-label"
+          >Document Name :
+          <input
+            id="dName"
+            name="document name"
+            class="form-control"
+            formControlName="documentName"
+            placeholder="Document Name"
+        /></label>
+      </div>
+      <div>
+        <label for="eDate" class="form-label"
+          >Date of Expiry :
+          <input
+            id="eDate"
+            name="expiry date"
+            class="form-control"
+            formControlName="dateOfExpiry"
+            placeholder="DD-MM-YYYY"
+        /></label>
+      </div>
+      <div>
+        <p>{{ warn }}</p>
+        <p>{{ success }}</p>
+      </div>
+      <div>
+        <button class="btn" type="submit" value="Submit">Submit</button>
+      </div>
+    </form>
+  </div>
 
-  <div>
+  <div class="listing">
     <h3>Document Details</h3>
-
+    btn-primary
     <ul>
       <li *ngFor="let vehicles of vehicleArr">
         {{ vehicles.registrationNumber }}

@@ -1,9 +1,52 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-md">
-    <a class="navbar-brand" href="home">Vehicles</a>
-
-    <a class="navbar-brand" href="documents">Documents</a>
-
-    <a class="navbar-brand" href="expenses">Expenses </a>
-  </div>
+<nav class="nav nav-pills">
+  <a
+    routerLink=""
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+    class="nav-link"
+    href=""
+    >Vehicles</a
+  >
+  <a
+    routerLink="/documents"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+    class="nav-link"
+    href="documents"
+    >Documents</a
+  >
+  <a
+    routerLink="/expenses"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+    class="nav-link"
+    href="expenses"
+    >Expenses</a
+  >
 </nav>
+
+<!-- <nav class="navbar flex-column flex-sm-row">
+  <ul class="nav nav-pills container-fluid">
+    <li>
+      <a class="flex-sm-fill text-sm-center nav-link" href="">Vehicles</a>
+    </li>
+    <li>
+      <a class="flex-sm-fill text-sm-center nav-link" href="documents"
+        >Documents</a
+      >
+    </li>
+    <li>
+      <a class="flex-sm-fill text-sm-center nav-link" href="expenses"
+        >Expenses
+      </a>
+    </li>
+  </ul>
+</nav> -->
+
+<!-- <nav class="nav nav-pills nav-fill">
+  <a class="navbar-brand" href="home">Vehicles</a>
+
+  <a class="navbar-brand" href="documents">Documents</a>
+
+  <a class="navbar-brand" href="expenses">Expenses </a>
+</nav> -->

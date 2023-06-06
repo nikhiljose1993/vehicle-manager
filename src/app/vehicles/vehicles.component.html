@@ -1,56 +1,73 @@
-<a routerLink="home" routerLinkActive="active"></a>
-<div>
-  <h3>Vehicle</h3>
-  <form
-    name="vehicles"
-    id="vehicles"
-    [formGroup]="requiredForm"
-    (ngSubmit)="onClickSubmit(requiredForm.value)"
-  >
-    <div>
-      <label for="registrationNumber"
-        >Vehicle Name :
-        <input
-          type="text"
-          id="vehicleName"
-          class="form-control"
-          formControlName="vehicleName"
-          placeholder="Vehicle Name"
-      /></label>
-    </div>
-    <div>
-      <label for="registrationNumber"
-        >Registration Number :
-        <input
-          type="text"
-          id="regNo"
-          class="form-control"
-          formControlName="registrationNumber"
-          placeholder="KL 00 A 0000"
-      /></label>
-    </div>
-    <div>
-      <label for="vehicleType"
-        >Vehicle Type :<select
-          class="form-control"
-          formControlName="vehicleType"
-        >
+<a routerLink="" routerLinkActive="active"></a>
+<div class="vehicles">
+  <div class="vehicle-form">
+    <h3>Vehicle</h3>
+    <form
+      name="vehicles"
+      id="vehicles"
+      *ngIf="requiredForm"
+      [formGroup]="requiredForm"
+      (ngSubmit)="onClickSubmit(requiredForm.value)"
+    >
+      <div>
+        <label class="form-label"
+          >Vehicle Name :
+          <input
+            type="text"
+            id="vehicleName"
+            class="form-control"
+            formControlName="vehicleName"
+            placeholder="Vehicle Name"
+        /></label>
+      </div>
+      <div>
+        <label class="form-label"
+          >Registration Number :
+          <input
+            type="text"
+            id="regNo"
+            class="form-control"
+            formControlName="registrationNumber"
+            placeholder="KL 00 A 0000"
+        /></label>
+      </div>
+      <div>
+        <label class="form-label"
+          >Vehicle Type :
+          <ng-select
+            [items]="vehicleTypes"
+            bindLabel="type"
+            bindValue="id"
+            formControlName="vehicleType"
+            [(ngModel)]="selectedVehicleId"
+            class="custom form-control"
+          >
+          </ng-select>
+          <!-- <select class="form-select form-control" formControlName="vehicleType">
           <option
             *ngFor="let vehicleType of vehicleTypes"
             [value]="vehicleType"
           >
             {{ vehicleType }}
           </option>
-        </select></label
-      >
-    </div>
-    <div><button type="submit" value="Submit">Submit</button></div>
-  </form>
-  <h3>Vehicle Details</h3>
-  <ul>
-    <li *ngFor="let vehicle of retrievedData">
-      {{ vehicle.registrationNumber }}, {{ vehicle.vehicleName }},
-      {{ vehicle.vehicleType }}
-    </li>
-  </ul>
+        </select> -->
+        </label>
+      </div>
+      <div>
+        <p>{{ warn }}{{ success }}</p>
+      </div>
+      <div>
+        <button class="btn btn" type="submit" value="Submit">Submit</button>
+      </div>
+    </form>
+  </div>
+  <div class="listing">
+    <h3>Listing</h3>
+    <ul>
+      <li *ngFor="let vehicle of retrievedData">
+        {{ vehicle.registrationNumber }}, {{ vehicle.vehicleName }},
+        {{ vehicle.vehicleType }}
+      </li>
+    </ul>
+  </div>
 </div>

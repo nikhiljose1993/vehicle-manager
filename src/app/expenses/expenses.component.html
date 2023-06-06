@@ -1,72 +1,84 @@
 <a routerLink="expenses" routerLinkActive="active"></a>
 <div class="expenses">
-  <h3>Expenses List</h3>
-  <form
-    name="Vehicle Expenses"
-    id="vehicleExpenses"
-    *ngIf="requiredForm"
-    [formGroup]="requiredForm"
-    (ngSubmit)="onClickSubmit(requiredForm.value)"
-  >
-    <div>
-      <label for="rNumber"
-        >Registration Number :
-        <select
-          id="regNumber"
+  <div class="expense-form">
+    <h3>Expenses List</h3>
+    <form
+      name="Vehicle Expenses"
+      id="vehicleExpenses"
+      *ngIf="requiredForm"
+      [formGroup]="requiredForm"
+      (ngSubmit)="onClickSubmit(requiredForm.value)"
+    >
+      <div>
+        <label for="rNumber" class="form-label"
+          >Registration Number :
+          <ng-select
+            [items]="regNoArr"
+            bindLabel="Registration Number"
+            bindValue="id"
+            formControlName="registrationNumber"
+            [(ngModel)]="selectedVehicleId"
+            class="custom form-control"
+          >
+          </ng-select>
+          <!-- <select
+          id="rNumber"
           name="registration Number"
-          class="form-control form-select"
+          class="form-select form-control"
           formControlName="registrationNumber"
         >
           <option *ngFor="let regNo of regNoArr">
             {{ regNo }}
           </option>
-        </select>
-      </label>
-    </div>
+        </select> -->
+        </label>
+      </div>
 
-    <div>
-      <label for="Date"
-        >Date :
-        <input
-          id="Date"
-          name="date"
-          class="form-control"
-          formControlName="date"
-          placeholder="DD-MM-YYYY"
-      /></label>
-    </div>
-    <div>
-      <label for="expenseName"
-        >Document Name :
-        <input
-          id="expenseName"
-          name="document name"
-          class="form-control"
-          formControlName="expenseName"
-          placeholder="Expense Name"
-      /></label>
-    </div>
-    <div>
-      <label for="expense"
-        >Date of Expiry :
-        <input
-          id="expense"
-          name="expenseName"
-          class="form-control"
-          formControlName="expense"
-          placeholder="00.00"
-      /></label>
-    </div>
-    <div>
-      <p>{{ warn }}</p>
-      <p>{{ success }}</p>
-    </div>
-    <div><button class="btn">Submit</button></div>
-  </form>
+      <div>
+        <label for="Date" class="form-label"
+          >Date :
+          <input
+            id="Date"
+            name="date"
+            class="form-control"
+            formControlName="date"
+            placeholder="DD-MM-YYYY"
+        /></label>
+      </div>
+      <div>
+        <label for="expenseName" class="form-label"
+          >Expense Name :
+          <input
+            id="expenseName"
+            name="document name"
+            class="form-control"
+            formControlName="expenseName"
+            placeholder="Expense Name"
+        /></label>
+      </div>
+      <div>
+        <label for="expense" class="form-label"
+          >Expense :
+          <input
+            id="expense"
+            name="expenseName"
+            class="form-control"
+            formControlName="expense"
+            placeholder="00.00"
+        /></label>
+      </div>
+      <div>
+        <p>{{ warn }}</p>
+        <p>{{ success }}</p>
+      </div>
+      <div>
+        <button class="btn" type="submit" value="Submit">Submit</button>
+      </div>
+    </form>
+  </div>
 
-  <div>
+  <div class="listing">
     <h3>Document Details</h3>
-
     <ul>
       <li *ngFor="let vehicles of vehicleArr">
         {{ vehicles.registrationNumber }}

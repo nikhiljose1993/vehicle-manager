@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
 @Component({
   selector: 'app-documents',
   templateUrl: './documents.component.html',
@@ -9,17 +8,35 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class DocumentsComponent implements OnInit {
   warn!: string;
   success!: string;
+  selectedVehicleId!: number;
 
   vehicleArr: any[] = JSON.parse(localStorage.getItem('data') as string);
   regNoArr: any[] = this.vehicleArr.map((vehicle) => {
     return vehicle.registrationNumber;
   });
+  ngOnInit(): void {
+    this.selectedVehicleId = this.regNoArr[0].id;
+  }
   vehicleForm() {
     this.requiredForm = this.fb.group({
       registrationNumber: ['', Validators.required],
-      date: ['', [Validators.required]],
+      date: [
+        '',
+        [Validators.required],
+        Validators.pattern(
+          /(^0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-(\d{4}$)/
+        ),
+      ],
       documentName: ['', Validators.required],
-      dateOfExpiry: ['', [Validators.required]],
+      dateOfExpiry: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(
+            /(^0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-(\d{4}$)/
+          ),
+        ],
+      ],
     });
   }
   requiredForm!: FormGroup;
@@ -27,7 +44,6 @@ export class DocumentsComponent implements OnInit {
     this.vehicleForm();
   }
 
-  ngOnInit(): void {}
   onClickSubmit(data: {
     registrationNumber: string;
     date: string;

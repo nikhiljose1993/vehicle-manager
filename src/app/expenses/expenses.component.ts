@@ -9,24 +9,36 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ExpensesComponent {
   warn!: string;
   success!: string;
+  selectedVehicleId!: number;
 
   vehicleArr: any[] = JSON.parse(localStorage.getItem('data') as string);
   regNoArr: any[] = this.vehicleArr.map((vehicle) => {
     return vehicle.registrationNumber;
   });
+  ngOnInit(): void {
+    this.selectedVehicleId = this.regNoArr[0].id;
+  }
   vehicleForm() {
     this.requiredForm = this.fb.group({
       registrationNumber: ['', Validators.required],
-      date: ['', [Validators.required]],
+      date: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(
+            /(^0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-(\d{4}$)/
+          ),
+        ],
+      ],
       expenseName: ['', Validators.required],
-      expense: ['', [Validators.required]],
+      expense: ['', Validators.required],
     });
   }
   requiredForm!: FormGroup;
   constructor(private fb: FormBuilder) {
     this.vehicleForm();
   }
-  ngOnInit(): void {}
+
   onClickSubmit(data: {
     registrationNumber: string;
     date: string;

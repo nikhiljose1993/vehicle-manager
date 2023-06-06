@@ -1,11 +1,10 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 
-import { TooltipModule } from 'ngx-bootstrap/tooltip';
-
+import { NgSelectModule } from '@ng-select/ng-select';
 import { AppComponent } from './app.component';
 import { VehiclesComponent } from './vehicles/vehicles.component';
 import { DocumentsComponent } from './documents/documents.component';
@@ -26,9 +25,10 @@ import { ExpensesComponent } from './expenses/expenses.component';
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
-    TooltipModule,
+    NgSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
+  schemas: [NO_ERRORS_SCHEMA],
 })
 export class AppModule {}

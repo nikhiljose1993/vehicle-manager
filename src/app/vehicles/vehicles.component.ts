@@ -1,28 +1,45 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-// import { NgSelectModule } from '@ng-select/ng-select';
+import { NgSelectModule } from '@ng-select/ng-select';
 @Component({
   selector: 'app-vehicles',
   templateUrl: './vehicles.component.html',
   styleUrls: ['./vehicles.component.css'],
 })
 export class VehiclesComponent implements OnInit {
+  warn!: string;
+  success!: string;
+  selectedVehicleId!: number;
+
   retrievedData: any[] = JSON.parse(localStorage.getItem('data') as string);
   ngOnInit(): void {
+    this.selectedVehicleId = this.vehicleTypes[0].id;
     this.retrievedData = JSON.parse(localStorage.getItem('data') as string);
   }
 
-  vehicleTypes: Array<string> = [
+  vehicleTypes: any[] = [
     'Motorcycle',
     'Scooter',
     'Car',
     'Heavy Vehicle',
+    // { id: 1, type: 'Motorcycle' },
+    // { id: 2, type: 'Scooter' },
+    // { id: 3, type: 'Car' },
+    // { id: 4, type: 'Heavy Vehicle' },
   ];
 
   vehicleForm() {
     this.requiredForm = this.fb.group({
       vehicleName: ['', Validators.required],
-      registrationNumber: ['', Validators.required],
+      registrationNumber: [
+        '',
+        [
+          Validators.required,
+          // Validators.pattern(
+          //   /(^(([A-Za-z]){2,3}( |-)(?:[0-9]){1,2}( |-)(?:[A-Za-z]){2}( |-)([0-9]){1,4})|(([A-Za-z]){2,3}( |-)([0-9]){1,4}))&/
+          // ),
+        ],
+      ],
       vehicleType: ['', Validators.required],
     });
   }
@@ -44,19 +61,23 @@ export class VehiclesComponent implements OnInit {
       documents: [],
       expenses: [],
     };
-
-    if (localStorage.getItem('data') === null) {
-      localStorage.setItem('data', JSON.stringify([vehicleObj]));
-      this.retrievedData = JSON.parse(localStorage.getItem('data') as string);
+    if (this.requiredForm.valid) {
+      if (localStorage.getItem('data') === null) {
+        localStorage.setItem('data', JSON.stringify([vehicleObj]));
+        this.retrievedData = JSON.parse(localStorage.getItem('data') as string);
+      } else {
+        const newData: Array<object> = JSON.parse(
+          localStorage.getItem('data') as string
+        );
+        newData.push(vehicleObj);
+        localStorage.setItem('data', JSON.stringify(newData));
+        this.retrievedData = JSON.parse(localStorage.getItem('data') as string);
+        this.warn = '';
+        this.success = 'Vehicle added successfully';
+      }
     } else {
-      const newData: Array<object> = JSON.parse(
-        localStorage.getItem('data') as string
-      );
-      console.log('submit', newData);
-      newData.push(vehicleObj);
-      console.log('new', newData);
-      localStorage.setItem('data', JSON.stringify(newData));
-      this.retrievedData = JSON.parse(localStorage.getItem('data') as string);
+      this.warn = 'Incomplete or incorrect data';
+      this.success = '';
     }
   }
 }
