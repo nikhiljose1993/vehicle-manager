@@ -40,7 +40,9 @@
             bindValue="id"
             formControlName="vehicleType"
             [(ngModel)]="selectedVehicleId"
-            class="custom form-control"
+            class="custom form-control form-select"
+            highlightColor="#9575cd"
+            highlightTextColor="#fff"
           >
           </ng-select>
           <!-- <select class="form-select form-control" formControlName="vehicleType">
@@ -57,7 +59,7 @@
         <p>{{ warn }}{{ success }}</p>
       </div>
       <div>
-        <button class="btn btn-outline-primary" type="submit" value="Submit">
+        <button class="btn btn-outline-danger" type="submit" value="Submit">
           Submit
         </button>
       </div>
