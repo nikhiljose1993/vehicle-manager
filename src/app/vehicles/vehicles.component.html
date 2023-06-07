@@ -1,7 +1,7 @@
 <a routerLink="" routerLinkActive="active"></a>
 <div class="vehicles">
   <div class="vehicle-form">
-    <h3>Vehicle</h3>
+    <h3>Vehicles</h3>
     <form
       name="vehicles"
       id="vehicles"
@@ -15,7 +15,7 @@
           <input
             type="text"
             id="vehicleName"
-            class="form-control"
+            class="form-control form"
             formControlName="vehicleName"
             placeholder="Vehicle Name"
         /></label>
@@ -26,7 +26,7 @@
           <input
             type="text"
             id="regNo"
-            class="form-control"
+            class="form-control form"
             formControlName="registrationNumber"
             placeholder="KL 00 A 0000"
         /></label>
@@ -40,38 +40,33 @@
             bindValue="id"
             formControlName="vehicleType"
             [(ngModel)]="selectedVehicleId"
-            class="custom form-control form-select"
-            highlightColor="#9575cd"
-            highlightTextColor="#fff"
+            class="form"
           >
           </ng-select>
-          <!-- <select class="form-select form-control" formControlName="vehicleType">
-          <option
-            *ngFor="let vehicleType of vehicleTypes"
-            [value]="vehicleType"
-          >
-            {{ vehicleType }}
-          </option>
-        </select> -->
         </label>
       </div>
       <div>
-        <p>{{ warn }}{{ success }}</p>
+        <p class="warn">{{ warn }}</p>
+        <p class="success">{{ success }}</p>
       </div>
       <div>
-        <button class="btn btn-outline-danger" type="submit" value="Submit">
+        <button
+          class="btn btn-outline-danger form"
+          type="submit"
+          value="Submit"
+        >
           Submit
         </button>
       </div>
     </form>
   </div>
   <div class="listing">
-    <h3>Listing</h3>
-    <ul>
-      <li *ngFor="let vehicle of retrievedData">
+    <h3>Vehicle Listing</h3>
+    <div>
+      <p *ngFor="let vehicle of retrievedData" class="list">
         {{ vehicle.registrationNumber }}, {{ vehicle.vehicleName }},
         {{ vehicle.vehicleType }}
-      </li>
-    </ul>
+      </p>
+    </div>
   </div>
 </div>

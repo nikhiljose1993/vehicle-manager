@@ -1,7 +1,7 @@
 <a routerLink="documents" routerLinkActive="active"></a>
 <div class="documents">
   <div class="document-form">
-    <h3>Documents List</h3>
+    <h3>Documents</h3>
     <form
       name="Vehicle Documents"
       id="vehicleDocuments"
@@ -18,19 +18,9 @@
             bindValue="id"
             formControlName="registrationNumber"
             [(ngModel)]="selectedVehicleId"
-            class="custom form-control"
+            class="form"
           >
           </ng-select>
-          <!-- <select
-          id="rNumber"
-          name="registration Number"
-          class="form-select form-control"
-          formControlName="registrationNumber"
-        >
-          <option *ngFor="let regNo of regNoArr">
-            {{ regNo }}
-          </option>
-        </select> -->
         </label>
       </div>
 
@@ -40,7 +30,7 @@
           <input
             id="entryDate"
             name="date"
-            class="form-control"
+            class="form-control form"
             formControlName="date"
             placeholder="DD-MM-YYYY"
         /></label>
@@ -51,7 +41,7 @@
           <input
             id="dName"
             name="document name"
-            class="form-control"
+            class="form-control form"
             formControlName="documentName"
             placeholder="Document Name"
         /></label>
@@ -62,17 +52,21 @@
           <input
             id="eDate"
             name="expiry date"
-            class="form-control"
+            class="form-control form"
             formControlName="dateOfExpiry"
             placeholder="DD-MM-YYYY"
         /></label>
       </div>
       <div>
-        <p>{{ warn }}</p>
-        <p>{{ success }}</p>
+        <p class="warn">{{ warn }}</p>
+        <p class="success">{{ success }}</p>
       </div>
       <div>
-        <button class="btn btn-outline-danger" type="submit" value="Submit">
+        <button
+          class="btn btn-outline-danger form"
+          type="submit"
+          value="Submit"
+        >
           Submit
         </button>
       </div>
@@ -81,19 +75,16 @@
 
   <div class="listing">
     <h3>Document Details</h3>
-    btn-primary
-    <ul>
-      <li *ngFor="let vehicles of vehicleArr">
+    <div>
+      <li *ngFor="let vehicles of vehicleArr" class="list">
         {{ vehicles.registrationNumber }}
         <ul>
           <li *ngFor="let documents of vehicles.documents">
-            <p>
-              {{ documents.documentName }}, Expiry :
-              {{ documents.dateOfExpiry }}
-            </p>
+            {{ documents.documentName }}, Expiry :
+            {{ documents.dateOfExpiry }}
           </li>
         </ul>
       </li>
-    </ul>
+    </div>
   </div>
 </div>

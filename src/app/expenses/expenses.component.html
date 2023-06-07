@@ -1,7 +1,7 @@
 <a routerLink="expenses" routerLinkActive="active"></a>
 <div class="expenses">
   <div class="expense-form">
-    <h3>Expenses List</h3>
+    <h3>Expenses</h3>
     <form
       name="Vehicle Expenses"
       id="vehicleExpenses"
@@ -18,19 +18,9 @@
             bindValue="id"
             formControlName="registrationNumber"
             [(ngModel)]="selectedVehicleId"
-            class="custom form-control"
+            class="form"
           >
           </ng-select>
-          <!-- <select
-          id="rNumber"
-          name="registration Number"
-          class="form-select form-control"
-          formControlName="registrationNumber"
-        >
-          <option *ngFor="let regNo of regNoArr">
-            {{ regNo }}
-          </option>
-        </select> -->
         </label>
       </div>
 
@@ -40,7 +30,7 @@
           <input
             id="Date"
             name="date"
-            class="form-control"
+            class="form-control form"
             formControlName="date"
             placeholder="DD-MM-YYYY"
         /></label>
@@ -51,7 +41,7 @@
           <input
             id="expenseName"
             name="document name"
-            class="form-control"
+            class="form-control form"
             formControlName="expenseName"
             placeholder="Expense Name"
         /></label>
@@ -62,17 +52,21 @@
           <input
             id="expense"
             name="expenseName"
-            class="form-control"
+            class="form-control form"
             formControlName="expense"
             placeholder="00.00"
         /></label>
       </div>
       <div>
-        <p>{{ warn }}</p>
-        <p>{{ success }}</p>
+        <p class="warn">{{ warn }}</p>
+        <p class="success">{{ success }}</p>
       </div>
       <div>
-        <button class="btn btn-outline-danger" type="submit" value="Submit">
+        <button
+          class="btn btn-outline-danger form"
+          type="submit"
+          value="Submit"
+        >
           Submit
         </button>
       </div>
@@ -80,19 +74,17 @@
   </div>
 
   <div class="listing">
-    <h3>Document Details</h3>
-    <ul>
-      <li *ngFor="let vehicles of vehicleArr">
+    <h3>Expense Details</h3>
+    <div>
+      <li *ngFor="let vehicles of vehicleArr" class="list">
         {{ vehicles.registrationNumber }}
         <ul>
           <li *ngFor="let expenses of vehicles.expenses">
-            <p>
-              {{ expenses.expenseName }}, {{ expenses.date }},
-              {{ expenses.expense }}
-            </p>
+            {{ expenses.expenseName }}, {{ expenses.date }}, ₹
+            {{ expenses.expense }}
           </li>
         </ul>
       </li>
-    </ul>
+    </div>
   </div>
 </div>

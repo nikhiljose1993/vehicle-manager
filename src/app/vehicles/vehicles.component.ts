@@ -17,16 +17,7 @@ export class VehiclesComponent implements OnInit {
     this.retrievedData = JSON.parse(localStorage.getItem('data') as string);
   }
 
-  vehicleTypes: any[] = [
-    'Motorcycle',
-    'Scooter',
-    'Car',
-    'Heavy Vehicle',
-    // { id: 1, type: 'Motorcycle' },
-    // { id: 2, type: 'Scooter' },
-    // { id: 3, type: 'Car' },
-    // { id: 4, type: 'Heavy Vehicle' },
-  ];
+  vehicleTypes: any[] = ['Motorcycle', 'Scooter', 'Car', 'Heavy Vehicle'];
 
   vehicleForm() {
     this.requiredForm = this.fb.group({
@@ -72,6 +63,7 @@ export class VehiclesComponent implements OnInit {
         newData.push(vehicleObj);
         localStorage.setItem('data', JSON.stringify(newData));
         this.retrievedData = JSON.parse(localStorage.getItem('data') as string);
+        this.requiredForm.reset;
         this.warn = '';
         this.success = 'Vehicle added successfully';
       }

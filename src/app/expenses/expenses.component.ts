@@ -56,6 +56,7 @@ export class ExpensesComponent {
         }
       });
       localStorage.setItem('data', JSON.stringify(newData));
+      this.requiredForm.reset;
       this.warn = '';
       this.success = 'Expense successfully saved';
     } else {
