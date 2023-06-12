@@ -15,9 +15,11 @@ export class ExpensesComponent {
   regNoArr: any[] = this.vehicleArr.map((vehicle) => {
     return vehicle.registrationNumber;
   });
+
   ngOnInit(): void {
     this.selectedVehicleId = this.regNoArr[0].id;
   }
+
   vehicleForm() {
     this.requiredForm = this.fb.group({
       registrationNumber: ['', Validators.required],
@@ -56,7 +58,7 @@ export class ExpensesComponent {
         }
       });
       localStorage.setItem('data', JSON.stringify(newData));
-      this.requiredForm.reset;
+      this.requiredForm.reset();
       this.warn = '';
       this.success = 'Expense successfully saved';
     } else {

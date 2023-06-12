@@ -61,7 +61,7 @@ export class DocumentsComponent implements OnInit {
         }
       });
       localStorage.setItem('data', JSON.stringify(newData));
-      this.requiredForm.reset;
+      this.requiredForm.reset();
       this.warn = '';
       this.success = 'Documents successfully saved';
     } else {

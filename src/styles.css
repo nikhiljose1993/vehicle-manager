@@ -25,7 +25,7 @@ ul {
   padding: 5% 20%;
 }
 .listing {
-  background: #c4b6e5;
+  background: #c2e9ea;
   border-radius: 7px;
   box-shadow: 0 6px 8px #44005c;
   padding: 5%;
@@ -33,10 +33,10 @@ ul {
 }
 .list {
   background: #edebf1;
-  border-radius: 7px;
-  box-shadow: 0px 5px 7px #302d31;
+  border-radius: 5px;
+  box-shadow: 0 6px 6px #302d31;
   text-align: left;
-  padding: 5px;
+  padding: 8px;
   margin-top: 3%;
 }
 .form {

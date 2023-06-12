@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NgSelectModule } from '@ng-select/ng-select';
 @Component({
   selector: 'app-vehicles',
   templateUrl: './vehicles.component.html',
@@ -26,9 +25,9 @@ export class VehiclesComponent implements OnInit {
         '',
         [
           Validators.required,
-          // Validators.pattern(
-          //   /(^(([A-Za-z]){2,3}( |-)(?:[0-9]){1,2}( |-)(?:[A-Za-z]){2}( |-)([0-9]){1,4})|(([A-Za-z]){2,3}( |-)([0-9]){1,4}))&/
-          // ),
+          Validators.pattern(
+            /^[A-Z]{2}[ -][0-9]{1,2}(?: [A-Z])?(?: [A-Z]*)? [0-9]{4}$/
+          ),
         ],
       ],
       vehicleType: ['', Validators.required],
@@ -63,7 +62,7 @@ export class VehiclesComponent implements OnInit {
         newData.push(vehicleObj);
         localStorage.setItem('data', JSON.stringify(newData));
         this.retrievedData = JSON.parse(localStorage.getItem('data') as string);
-        this.requiredForm.reset;
+        this.requiredForm.reset();
         this.warn = '';
         this.success = 'Vehicle added successfully';
       }
